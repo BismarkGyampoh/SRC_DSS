@@ -1,0 +1,314 @@
+{
+  "info": {
+    "name": "SRC DSS API",
+    "description": "Postman Collection for SRC Decision Support System API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost/DSS",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Admin Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "username",
+                  "value": "admin",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "password123",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/controllers/login_action.php",
+              "host": ["{{base_url}}"],
+              "path": ["controllers", "login_action.php"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "GDSS",
+      "item": [
+        {
+          "name": "Submit Vote - Valid",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "reach_weight",
+                  "value": "0.6",
+                  "type": "text"
+                },
+                {
+                  "key": "speed_weight",
+                  "value": "0.4",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/controllers/action_gdss_vote.php",
+              "host": ["{{base_url}}"],
+              "path": ["controllers", "action_gdss_vote.php"]
+            }
+          }
+        },
+        {
+          "name": "Submit Vote - Failure",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "reach_weight",
+                  "value": "0.8",
+                  "type": "text"
+                },
+                {
+                  "key": "speed_weight",
+                  "value": "0.5",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/controllers/action_gdss_vote.php",
+              "host": ["{{base_url}}"],
+              "path": ["controllers", "action_gdss_vote.php"]
+            }
+          }
+        },
+        {
+          "name": "Finalize GDSS Averages",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{base_url}}/controllers/action_gdss_finalize.php",
+              "host": ["{{base_url}}"],
+              "path": ["controllers", "action_gdss_finalize.php"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin - User Management",
+      "item": [
+        {
+          "name": "Create Executive User",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "action",
+                  "value": "create_user",
+                  "type": "text"
+                },
+                {
+                  "key": "username",
+                  "value": "new_exec",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "newpass123",
+                  "type": "text"
+                },
+                {
+                  "key": "user_role",
+                  "value": "Executive Board",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/controllers/action_admin_manage_users.php",
+              "host": ["{{base_url}}"],
+              "path": ["controllers", "action_admin_manage_users.php"]
+            }
+          }
+        },
+        {
+          "name": "Delete Executive User",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "action",
+                  "value": "delete_user",
+                  "type": "text"
+                },
+                {
+                  "key": "user_id",
+                  "value": "5",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/controllers/action_admin_manage_users.php",
+              "host": ["{{base_url}}"],
+              "path": ["controllers", "action_admin_manage_users.php"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin - System Maintenance",
+      "item": [
+        {
+          "name": "Reset Semester Projects",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "action",
+                  "value": "reset_projects",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/controllers/action_admin_db_utils.php",
+              "host": ["{{base_url}}"],
+              "path": ["controllers", "action_admin_db_utils.php"]
+            }
+          }
+        },
+        {
+          "name": "Purge Audit Logs",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "action",
+                  "value": "purge_all",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/controllers/action_admin_audit_logs.php",
+              "host": ["{{base_url}}"],
+              "path": ["controllers", "action_admin_audit_logs.php"]
+            }
+          }
+        },
+        {
+          "name": "Optimize Database Tables",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{base_url}}/controllers/action_admin_optimize.php",
+              "host": ["{{base_url}}"],
+              "path": ["controllers", "action_admin_optimize.php"]
+            }
+          }
+        },
+        {
+          "name": "Trigger System Backup",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{base_url}}/controllers/action_admin_backup.php",
+              "host": ["{{base_url}}"],
+              "path": ["controllers", "action_admin_backup.php"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin - Data Export",
+      "item": [
+        {
+          "name": "Export Projects CSV",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/controllers/action_admin_export.php?type=projects",
+              "host": ["{{base_url}}"],
+              "path": ["controllers", "action_admin_export.php"],
+              "query": [
+                {
+                  "key": "type",
+                  "value": "projects"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Export Users CSV",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/controllers/action_admin_export.php?type=users",
+              "host": ["{{base_url}}"],
+              "path": ["controllers", "action_admin_export.php"],
+              "query": [
+                {
+                  "key": "type",
+                  "value": "users"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
