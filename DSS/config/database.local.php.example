@@ -1,0 +1,18 @@
+<?php
+
+// Local configuration — DO NOT COMMIT THIS FILE.
+// Copy this file to database.local.php and fill in your real values.
+//
+// Works identically on local dev and on InfinityFree shared hosting:
+// just set the values below for each environment.
+
+return [
+    // MySQL connection
+    'host' => 'sql301.infinityfree.com',   // localhost on your local XAMPP
+    'name' => 'if0_41105880_src_dss_db',   // your local database name
+    'user' => 'if0_41105880',              // your local db user (often 'root')
+    'pass' => 'CHANGE_ME',                 // your local db password
+
+    // API key for api/index.php (JSON endpoint). Use a long random string.
+    'api_key' => 'CHANGE_ME_TO_A_LONG_RANDOM_STRING',
+];
